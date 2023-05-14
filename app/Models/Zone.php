@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Venue extends Model
+class Zone extends Model
 {
     use HasFactory;
     protected $fillable =[
         'name',
-        'location'
+        'venue_id'
     ];
-    public function zone(){
-        return $this->hasMany(Zone::class);
+    public function venue(){
+        return $this->belongsTo(Venue::class);
     }
 }
