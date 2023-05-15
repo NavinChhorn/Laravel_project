@@ -15,4 +15,7 @@ class Zone extends Model
     public function venue(){
         return $this->belongsTo(Venue::class);
     }
+    public function ticket(){
+        return $this->hasMany(Ticket::class);
+    }
 }
