@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MatchController;
+use App\Http\Controllers\MatchCountryController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Http\Request;
@@ -29,3 +31,5 @@ Route::resource('event',EventController::class);
 Route::resource('country',CountryController::class);
 Route::resource('venue',VenueController::class);
 Route::resource('zone',ZoneController::class);
+Route::resource('match',MatchController::class);
+Route::resource('matchcountry',MatchCountryController::class);

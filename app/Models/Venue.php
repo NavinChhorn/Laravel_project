@@ -15,4 +15,8 @@ class Venue extends Model
     public function zone(){
         return $this->hasMany(Zone::class);
     }
+    public function match(){
+        return $this->hasMany(Matches::class);
+    }
+    
 }

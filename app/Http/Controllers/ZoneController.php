@@ -14,8 +14,7 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        //
-        $zone = Zone::all();
+        $zone = Zone::with('venue')->get();
         return response()->json(['message'=>'request success !','data'=>$zone],200);
     }
 
@@ -42,7 +41,7 @@ class ZoneController extends Controller
      */
     public function show(string $id)
     {
-        $zone = Zone::find($id)->venue;
+        $zone = Zone::with('venue')->find($id);
         return response()->json(['message'=>'request success !','data'=>$zone],200);
         
     }
@@ -65,9 +64,7 @@ class ZoneController extends Controller
         return response()->json(['message'=>'Update success !','data'=>$zone],200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $zone = Zone::find($id);

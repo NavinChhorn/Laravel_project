@@ -12,4 +12,7 @@ class Event extends Model
         'name',
         'description'
     ];
+    public function match(){
+        return $this->hasMany(Matches::class);
+    }
 }
