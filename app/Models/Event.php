@@ -15,7 +15,5 @@ class Event extends Model
     public function match(){
         return $this->hasMany(Matches::class);
     }
-    public function ticket(){
-        return $this->hasMany(Ticket::class);
-    }
+   
 }

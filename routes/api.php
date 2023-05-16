@@ -29,9 +29,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::resource('event',EventController::class);
 Route::resource('event',EventController::class);
+// =============== Route search event =================================
+Route::get('/searchevent/{name}',[EventController::class,'search']);
+
+
+
 Route::resource('country',CountryController::class);
 Route::resource('venue',VenueController::class);
 Route::resource('zone',ZoneController::class);
 Route::resource('match',MatchController::class);
 Route::resource('matchcountry',MatchCountryController::class);
+// ==================== ticket route =================================
 Route::resource('ticket',TicketController::class);
+// =============== Route booking ticket ==============================
+Route::get('/booking/{eventname}',[TicketController::class,'booking']);
+
+

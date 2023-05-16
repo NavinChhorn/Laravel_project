@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
        $events = Event::all();
@@ -69,4 +67,12 @@ class EventController extends Controller
         $event->delete();
         return response()->json(['message'=>true],200);
     }
+
+
+    public function search( $name){
+        $event = Event::where('name','like','%'.$name.'%');
+        return $event;
+    }
+
+    
 }

@@ -23,7 +23,5 @@ class Matches extends Model
     public function matchCountry(){
         return $this->hasMany(MatchCountry::class);
     }
-    public function ticket(){
-        return $this->hasMany(Ticket::class);
-    }
+    
 }

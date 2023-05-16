@@ -18,16 +18,16 @@ return new class extends Migration
             ->references("id")
             ->on("zones")
             ->onDelete('cascade');
-            $table->unsignedBigInteger("event_id");
-            $table->foreign("event_id")
+            // $table->unsignedBigInteger("event_id");
+            // $table->foreign("event_id")
+            // ->references("id")
+            // ->on("events");
+            $table->unsignedBigInteger("match_country_id");
+            $table->foreign("match_country_id")
             ->references("id")
-            ->on("events");
-            $table->unsignedBigInteger("match_id");
-            $table->foreign("match_id")
-            ->references("id")
-            ->on("matches")
+            ->on("match_countries")
             ->onDelete('cascade');
-
+            $table->boolean('booking')->default(0);
             $table->timestamps();
         });
     }
