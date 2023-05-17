@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ShowMatchResource;
 use App\Models\Matches;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -12,8 +13,8 @@ class MatchController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $matches = Matches::with('match')->get();
+    {   
+        $matches = Matches::all();
         return response()->json(['message'=>true,'data'=>$matches],200);
     }
 
@@ -35,13 +36,16 @@ class MatchController extends Controller
             'event_id'=>$request->input("event_id"),
             'venue_id'=>$request ->input('venue_id')
         ]);
+        $match = new ShowMatchResource($match);
         return response()->json(['message'=>'create success !','data'=>$match],200);
     }
 
     
     public function show(string $id)
     {
-       
+       $match = Matches::find($id);
+       $match = new ShowMatchResource($match);
+       return response()->json(['message'=>' Success !','data'=>$match],200);
     }
 
    
@@ -63,6 +67,7 @@ class MatchController extends Controller
         'event_id'=>$request->input('event_id'),
         'venue_id'=>$request->input('venue_id')
        ]);
+       $match = new ShowMatchResource($match);
        return response()->json(['message'=>'Update success !','data'=>$match],200);
 
     }

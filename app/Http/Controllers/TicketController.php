@@ -33,15 +33,18 @@ class TicketController extends Controller
             'zone_id'=>$request->input('zone_id'),
             'match_country_id'=>$request->input('match_country_id')
         ]);
+        $ticket = new ShowTicketResource( $ticket);
         return response()->json(['message'=>'Create success !','data'=>$ticket],200);
         
     }
 
     
-    public function show(string $id)
+    public function show( $id)
     {
         
-        $ticket= Ticket::find($id);
+
+        $ticket = Ticket::find($id);
+
         $ticket = new ShowTicketResource( $ticket);
         return response()->json(['message'=>true,'data'=>$ticket],200);
     }
@@ -63,6 +66,7 @@ class TicketController extends Controller
             'zone_id'=>$request->input('zone_id'),
             'match_country_id'=>$request->input('match_country_id')
         ]);
+        $ticket = new ShowTicketResource(  $ticket);
         return response()->json(['message'=>'Update success !','data'=>$ticket],200);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ShowZoneResource;
 use App\Models\Venue;
 use App\Models\Zone;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class ZoneController extends Controller
             'name'=>$request->input('name'),
             'venue_id'=>$request->input('venue_id')
         ]);
+        $zone = new ShowZoneResource($zone);
         return response()->json(['message'=>'create success !','data'=>$zone],200);
         
     }

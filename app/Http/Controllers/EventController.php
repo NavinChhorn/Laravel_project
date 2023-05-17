@@ -70,8 +70,8 @@ class EventController extends Controller
 
 
     public function search( $name){
-        $event = Event::where('name','like','%'.$name.'%');
-        return $event;
+        $event = Event::where('name','like','%'.$name.'%')->get();
+        return response()->json(['message'=>true,'data'=>$event],200);
     }
 
     

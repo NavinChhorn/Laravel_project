@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ShowMatchCountryResource;
 use App\Models\Country;
 use App\Models\MatchCountry;
 use Illuminate\Http\Request;
@@ -29,13 +30,16 @@ class MatchCountryController extends Controller
             'match_id'=>$request->input('match_id'),
             'country_id'=>$request->input('country_id')
         ]);
+        $matchcountry = new ShowMatchCountryResource( $matchcountry);
         return response()->json(['message'=>'Create success !','data'=>$matchcountry],200);
     }
 
     
     public function show(string $id)
     {
-        $matchcountry = MatchCountry::with('match')->with('country')->find($id);
+        // $matchcountry = MatchCountry::with('match')->with('country')->find($id);
+        $matchcountry = MatchCountry::find($id);
+        $matchcountry = new ShowMatchCountryResource( $matchcountry);
         return response()->json(['message'=>'Create success !','data'=>$matchcountry],200);
     }
 
@@ -57,6 +61,7 @@ class MatchCountryController extends Controller
             'match_id'=>$request->input('match_id'),
             'country_id'=>$request->input('country_id')
         ]);
+        $matchcountry = new ShowMatchCountryResource( $matchcountry);
         return response()->json(['message'=>'Update success !','data'=> $matchcountry],200);
     }
 
